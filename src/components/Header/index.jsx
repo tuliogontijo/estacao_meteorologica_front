@@ -1,5 +1,9 @@
-import Navbar from './components/Navbar';
 import ClimaSVG from './../../assets/icons/cloud-sun.svg';
+import Subheader from './Subheader';
+
+import CalendarioSVG from './../../assets/icons/calendar.svg';
+import LocalSVG from './../../assets/icons/map-marker.svg';
+import AltitudeSVG from './../../assets/icons/mountain.svg';
 
 const Header = () => {
   return (
@@ -11,7 +15,25 @@ const Header = () => {
           className="w-[70px]"
         />
       </div>
-      <Navbar />
+
+      <Subheader.Root>
+        <Subheader.Item
+          iconSrc={CalendarioSVG}
+          textContent={<>Segunda-feira, 28 de maio de 2024</>}
+        />
+        <Subheader.Item
+          iconSrc={LocalSVG}
+          textContent={<>Monte Carmelo - Minas Gerais - Brasil</>}
+        />
+        <Subheader.Item
+          iconSrc={AltitudeSVG}
+          textContent={
+            <>
+              Altitude: <span className="text-2xl ml-3">800m</span>
+            </>
+          }
+        />
+      </Subheader.Root>
     </header>
   );
 };

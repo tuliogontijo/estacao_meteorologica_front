@@ -1,4 +1,6 @@
-const NavItem = ({ iconSrc, textContent }) => {
+import PropTypes from 'prop-types';
+
+const SubheaderItem = ({ iconSrc, textContent }) => {
   return (
     <div className="border-2 border-black rounded-2xl align-middle flex p-4 justify-center w-full max-lg:justify-start">
       <img
@@ -10,4 +12,9 @@ const NavItem = ({ iconSrc, textContent }) => {
   );
 };
 
-export default NavItem;
+SubheaderItem.propTypes = {
+  iconSrc: PropTypes.string.isRequired,
+  textContent: PropTypes.node.isRequired
+};
+
+export default SubheaderItem;
