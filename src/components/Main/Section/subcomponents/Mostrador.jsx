@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Mostrador = ({ dados, unidade }) => {
   return (
     <div className="border-2 border-black rounded-2xl p-4 text-left flex gap-3 items-center w-full">
@@ -8,6 +10,11 @@ const Mostrador = ({ dados, unidade }) => {
       </span>
     </div>
   );
+};
+
+Mostrador.propTypes = {
+  dados: PropTypes.object.isRequired,
+  unidade: PropTypes.string.isRequired
 };
 
 export default Mostrador;

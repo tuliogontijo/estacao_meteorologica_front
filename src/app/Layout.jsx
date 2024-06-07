@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+
 import Context from '../context/Context';
+
 import Header from './../components/Header';
 import Main from './../components/Main';
 

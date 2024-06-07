@@ -1,7 +1,8 @@
+import { useContext } from 'react';
+import Context from '../../context/Context';
+
 import Section from './Section';
 import Grafico from './Section/subcomponents/Grafico';
-import Context from '../../context/Context';
-import { useContext } from 'react';
 
 const Main = () => {
   const payload = useContext(Context);
@@ -9,7 +10,7 @@ const Main = () => {
   const { dados } = payload;
 
   return (
-    <>
+    <main>
       {grandezas.map((grandeza, index) => {
         const { mostradores, valores: dadosGrafico, unidade } = dados[grandeza];
         return (
@@ -27,7 +28,7 @@ const Main = () => {
           ></Section>
         );
       })}
-    </>
+    </main>
   );
 };
 

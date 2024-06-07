@@ -1,11 +1,13 @@
-import ClimaSVG from './../../assets/icons/cloud-sun.svg';
+import PropTypes from 'prop-types';
+import { useContext, useState } from 'react';
+import Context from '../../context/Context';
+
 import Subheader from './Subheader';
 
+import ClimaSVG from './../../assets/icons/cloud-sun.svg';
 import CalendarioSVG from './../../assets/icons/calendar.svg';
 import LocalSVG from './../../assets/icons/map-marker.svg';
 import AltitudeSVG from './../../assets/icons/mountain.svg';
-import { useContext, useState } from 'react';
-import Context from '../../context/Context';
 
 const Header = ({ handleMudaData, dataDisplay }) => {
   const { altitude } = useContext(Context);
@@ -85,6 +87,11 @@ const Header = ({ handleMudaData, dataDisplay }) => {
       </Subheader.Root>
     </header>
   );
+};
+
+Header.propTypes = {
+  handleMudaData: PropTypes.func.isRequired,
+  dataDisplay: PropTypes.string.isRequired
 };
 
 export default Header;

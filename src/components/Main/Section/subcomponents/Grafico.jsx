@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import { Line } from '@ant-design/charts';
 
 const Grafico = ({ dados }) => {
@@ -19,11 +20,6 @@ const Grafico = ({ dados }) => {
       x: { title: 'Hora' },
       y: { title: unidade }
     },
-    // label: {
-    //   text: 'valor',
-    //   lineHeight: -15,
-    //   formatter: (texto) => texto + unidade
-    // },
     style: {
       lineWidth: 2
     },

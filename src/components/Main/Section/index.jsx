@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import Mostrador from './subcomponents/Mostrador';
 
 const Section = ({ title, grafico, dadosMostradores, unidade }) => {
@@ -8,7 +9,7 @@ const Section = ({ title, grafico, dadosMostradores, unidade }) => {
       <div className="flex max-lg:flex-col">
         <div className="basis-3/4 p-4 max-lg:px-0">{grafico}</div>
         <div className="basis-1/4 p-4">
-          <div className="flex flex-col gap-8 justify-center h-full">
+          <div className="flex flex-col gap-8 max-md:gap-2 justify-center h-full">
             {dadosMostradores.map((dados, index) => (
               <Mostrador
                 key={index}
@@ -26,7 +27,8 @@ const Section = ({ title, grafico, dadosMostradores, unidade }) => {
 Section.propTypes = {
   title: PropTypes.string.isRequired,
   grafico: PropTypes.node.isRequired,
-  dadosMostradores: PropTypes.array.isRequired
+  dadosMostradores: PropTypes.array.isRequired,
+  unidade: PropTypes.string.isRequired
 };
 
 export default Section;
