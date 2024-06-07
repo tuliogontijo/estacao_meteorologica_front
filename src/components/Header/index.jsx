@@ -4,8 +4,20 @@ import Subheader from './Subheader';
 import CalendarioSVG from './../../assets/icons/calendar.svg';
 import LocalSVG from './../../assets/icons/map-marker.svg';
 import AltitudeSVG from './../../assets/icons/mountain.svg';
+import { useContext, useState } from 'react';
+import Context from '../../context/Context';
 
-const Header = () => {
+const Header = ({ handleMudaData }) => {
+  const { altitude } = useContext(Context);
+
+  const [data, setData] = useState('2024-06-07');
+
+  const handleChangeDate = (e) => {
+    const { value } = e.target;
+    setData(value);
+    handleMudaData(value);
+  };
+
   return (
     <header>
       <div className="border-2 border-black	rounded-2xl p-9 flex justify-center gap-3">
@@ -19,7 +31,14 @@ const Header = () => {
       <Subheader.Root>
         <Subheader.Item
           iconSrc={CalendarioSVG}
-          textContent={<>Segunda-feira, 28 de maio de 2024</>}
+          textContent={
+            <input
+              type="date"
+              className="text-xl border border-black rounded-lg p-1"
+              value={data}
+              onChange={handleChangeDate}
+            />
+          }
         />
         <Subheader.Item
           iconSrc={LocalSVG}
@@ -29,7 +48,7 @@ const Header = () => {
           iconSrc={AltitudeSVG}
           textContent={
             <>
-              Altitude: <span className="text-2xl ml-3">800m</span>
+              Altitude: <span className="text-2xl ml-3">{altitude}</span>
             </>
           }
         />

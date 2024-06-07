@@ -1,14 +1,33 @@
 import Section from './Section';
 import Grafico from './Section/subcomponents/Grafico';
-import Mostrador from './Section/subcomponents/Mostrador';
+import Context from '../../context/Context';
+import { useContext } from 'react';
 
 const Main = () => {
+  const payload = useContext(Context);
+  const grandezas = Object.keys(payload.dados);
+  const { dados } = payload;
+
   return (
-    <Section
-      title="Temperatura"
-      grafico={<Grafico />}
-      mostradores={[<Mostrador />, <Mostrador />]}
-    ></Section>
+    <>
+      {grandezas.map((grandeza, index) => {
+        const { mostradores, valores: dadosGrafico, unidade } = dados[grandeza];
+        return (
+          <Section
+            key={index}
+            title={grandeza}
+            grafico={
+              <Grafico
+                key={index}
+                dados={{ unidade, dadosGrafico }}
+              />
+            }
+            dadosMostradores={mostradores}
+            unidade={unidade}
+          ></Section>
+        );
+      })}
+    </>
   );
 };
 
