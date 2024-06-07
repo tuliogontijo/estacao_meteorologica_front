@@ -39,7 +39,12 @@ const Grafico = ({ dados }) => {
     }
   };
 
-  return <Line {...props} />;
+  return (
+    <Line
+      className="w-full"
+      {...props}
+    />
+  );
 };
 
 Grafico.propTypes = {

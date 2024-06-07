@@ -7,15 +7,32 @@ import AltitudeSVG from './../../assets/icons/mountain.svg';
 import { useContext, useState } from 'react';
 import Context from '../../context/Context';
 
-const Header = ({ handleMudaData }) => {
+const Header = ({ handleMudaData, dataDisplay }) => {
   const { altitude } = useContext(Context);
 
-  const [data, setData] = useState('2024-06-07');
+  const [dataSelecionada, setDataSelecionada] = useState(dataDisplay);
 
-  const handleChangeDate = (e) => {
+  const handleAtualizaValorData = (e) => {
     const { value } = e.target;
-    setData(value);
-    handleMudaData(value);
+    setDataSelecionada(value);
+  };
+
+  const handleSubmitDataSeletor = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const dadosForm = new FormData(form);
+
+    handleMudaData(dadosForm.get('data'));
+  };
+
+  const getQuinzeDiasAtras = () => {
+    const dataBruta = new Date();
+    dataBruta.setDate(dataBruta.getDate() - 15);
+    const ano = dataBruta.getFullYear();
+    const mes = String(dataBruta.getMonth() + 1).padStart(2, '0');
+    const dia = String(dataBruta.getDate()).padStart(2, '0');
+
+    return `${ano}-${mes}-${dia}`;
   };
 
   return (
@@ -32,12 +49,25 @@ const Header = ({ handleMudaData }) => {
         <Subheader.Item
           iconSrc={CalendarioSVG}
           textContent={
-            <input
-              type="date"
-              className="text-xl border border-black rounded-lg p-1"
-              value={data}
-              onChange={handleChangeDate}
-            />
+            <form
+              onSubmit={handleSubmitDataSeletor}
+              className="flex w-full gap-3 max-lg:gap-1"
+            >
+              <input
+                type="date"
+                name="data"
+                max={new Date().toISOString().split('T')[0]}
+                min={getQuinzeDiasAtras()}
+                className="text-xl border border-black rounded-lg p-1"
+                value={dataSelecionada}
+                onChange={handleAtualizaValorData}
+              />
+              <input
+                type="submit"
+                value={'Selecionar'}
+                className="border-2 border-black rounded-md px-2 max-sm:px-1 bg-gray-900 text-white hover:text-black hover:bg-white"
+              />
+            </form>
           }
         />
         <Subheader.Item

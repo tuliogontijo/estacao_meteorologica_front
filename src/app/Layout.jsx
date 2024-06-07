@@ -7,6 +7,7 @@ import { payload as dados } from '../mock/mock';
 
 const Layout = () => {
   const [payload, setPayload] = useState();
+  const [dataDisplay, setDataDisplay] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const getDadosPorData = (data = new Date().toISOString().split('T')[0]) => {
@@ -19,7 +20,10 @@ const Layout = () => {
       console.log(e);
     } finally {
       setTimeout(() => setIsLoading(false), 1000);
+      setDataDisplay(data);
     }
+
+    return data;
   };
 
   useEffect(() => {
@@ -32,7 +36,10 @@ const Layout = () => {
         <div>Carregando dados</div>
       ) : (
         <>
-          <Header handleMudaData={getDadosPorData} />
+          <Header
+            handleMudaData={getDadosPorData}
+            dataDisplay={dataDisplay}
+          />
           <Main />
         </>
       )}
