@@ -9,7 +9,7 @@ import CalendarioSVG from './../../assets/icons/calendar.svg';
 import LocalSVG from './../../assets/icons/map-marker.svg';
 import AltitudeSVG from './../../assets/icons/mountain.svg';
 
-const Header = ({ handleMudaData, dataDisplay }) => {
+const Header = ({ handleMudaData, dataDisplay, getDataAtual }) => {
   const { altitude } = useContext(Context);
 
   const [dataSelecionada, setDataSelecionada] = useState(dataDisplay);
@@ -23,7 +23,6 @@ const Header = ({ handleMudaData, dataDisplay }) => {
     e.preventDefault();
     const form = e.target;
     const dadosForm = new FormData(form);
-
     handleMudaData(dadosForm.get('data'));
   };
 
@@ -58,7 +57,7 @@ const Header = ({ handleMudaData, dataDisplay }) => {
               <input
                 type="date"
                 name="data"
-                max={new Date().toISOString().split('T')[0]}
+                max={getDataAtual()}
                 min={getQuinzeDiasAtras()}
                 className="text-xl border border-black rounded-lg p-1"
                 value={dataSelecionada}

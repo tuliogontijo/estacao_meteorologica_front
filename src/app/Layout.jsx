@@ -12,7 +12,12 @@ const Layout = () => {
   const [dataDisplay, setDataDisplay] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  const getDadosPorData = (data = new Date().toISOString().split('T')[0]) => {
+  const getDataAtual = () => {
+    const dataAtual = new Date().toLocaleString();
+    return dataAtual.substring(6, 10) + '-' + dataAtual.substring(3, 5) + '-' + dataAtual.substring(0, 2);
+  };
+
+  const getDadosPorData = (data = getDataAtual()) => {
     setIsLoading(true);
     try {
       //Fazer requisição POST
@@ -40,6 +45,7 @@ const Layout = () => {
         <>
           <Header
             handleMudaData={getDadosPorData}
+            getDataAtual={getDataAtual}
             dataDisplay={dataDisplay}
           />
           <Main />
