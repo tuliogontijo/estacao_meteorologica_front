@@ -5,6 +5,10 @@ import Context from '../context/Context';
 import Header from './../components/Header';
 import Main from './../components/Main';
 
+//import LoaderSVG from '../assets/loader.svg';
+
+import { Loader } from '../components/Loader';
+
 import { payload as dados } from '../mock/mock';
 
 const Layout = () => {
@@ -40,8 +44,11 @@ const Layout = () => {
   return (
     <Context.Provider value={payload}>
       {isLoading ? (
-        <div>Carregando dados</div>
+        <div className="w-full h-screen flex items-center justify-center text-8xl mt-[-32px]">
+          <Loader />
+        </div>
       ) : (
+        // <div>Carregando dados</div>
         <>
           <Header
             handleMudaData={getDadosPorData}
