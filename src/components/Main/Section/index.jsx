@@ -19,9 +19,9 @@ const Section = ({ title, grafico, dadosMostradores, ultimaMedicao, unidade }) =
     <div className="border-2 border-black rounded-2xl p-6 max-md:p-0 mb-6">
       <div className="grid grid-cols-4 ">
         <div className="col-span-3 max-md:col-span-4">
-          <h2 className="font-bold text-left mb-4 text-xl max-md:p-3 max-md:text-base">{title}</h2>
+          <h2 className="font-bold text-left mb-4 text-xl max-md:text-2xl max-md:text-center max-md:p-3 ">{title}</h2>
         </div>
-        <div className="col-span-1 max-md:col-span-4 px-4">
+        <div className="col-span-1 max-lg:col-span-4 px-4">
           <Mostrador
             dados={{ texto: 'Última Medição', valor }}
             unidade={unidade}
