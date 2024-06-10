@@ -12,7 +12,7 @@ const Main = () => {
   return (
     <main>
       {grandezas.map((grandeza, index) => {
-        const { mostradores, valores: dadosGrafico, unidade } = dados[grandeza];
+        const { mostradores, valores: dadosGrafico, unidade, ultimaMedicao } = dados[grandeza];
         return (
           <Section
             key={index}
@@ -24,6 +24,7 @@ const Main = () => {
               />
             }
             dadosMostradores={mostradores}
+            ultimaMedicao={ultimaMedicao}
             unidade={unidade}
           ></Section>
         );

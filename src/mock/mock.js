@@ -4,6 +4,7 @@ export const payload = {
   'dados': {
     'Temperatura': {
       unidade: 'ºC',
+      ultimaMedicao: { valor: 25, horario: Date.now() },
       mostradores: [
         { texto: 'Máxima', valor: 29 },
         { texto: 'Mínima', valor: 18 }
@@ -37,6 +38,7 @@ export const payload = {
     },
     'Sensação Térmica': {
       unidade: 'ºC',
+      ultimaMedicao: { valor: 25, horario: Date.now() },
       mostradores: [
         { texto: 'Máxima', valor: 29 },
         { texto: 'Mínima', valor: 18 }
@@ -70,6 +72,7 @@ export const payload = {
     },
     'Volume de Chuva': {
       unidade: 'mm',
+      ultimaMedicao: { valor: 25, horario: Date.now() },
       mostradores: [{ texto: 'Acumulado', valor: 10 }],
       valores: [
         { hora: 0, valor: 18 },
@@ -100,6 +103,7 @@ export const payload = {
     },
     'Umidade': {
       unidade: '%',
+      ultimaMedicao: { valor: 60, horario: Date.now() },
       mostradores: [
         { texto: 'Máxima', valor: 70 },
         { texto: 'Mínima', valor: 50 }
@@ -133,6 +137,7 @@ export const payload = {
     },
     'Pressão': {
       unidade: 'hPa',
+      ultimaMedicao: { valor: 65, horario: Date.now() },
       mostradores: [
         { texto: 'Máxima', valor: 70 },
         { texto: 'Mínima', valor: 50 }

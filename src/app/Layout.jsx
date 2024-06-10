@@ -5,8 +5,6 @@ import Context from '../context/Context';
 import Header from './../components/Header';
 import Main from './../components/Main';
 
-//import LoaderSVG from '../assets/loader.svg';
-
 import { Loader } from '../components/Loader';
 
 import { payload as dados } from '../mock/mock';
@@ -33,8 +31,6 @@ const Layout = () => {
       setTimeout(() => setIsLoading(false), 1000);
       setDataDisplay(data);
     }
-
-    return data;
   };
 
   useEffect(() => {
@@ -48,7 +44,6 @@ const Layout = () => {
           <Loader />
         </div>
       ) : (
-        // <div>Carregando dados</div>
         <>
           <Header
             handleMudaData={getDadosPorData}
