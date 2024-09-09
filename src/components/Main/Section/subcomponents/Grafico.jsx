@@ -11,7 +11,10 @@ const Grafico = ({ dados }) => {
     data: dadosGrafico,
     xField: 'hora',
     yField: 'valor',
-    tooltip: { title: (d) => d.hora + ':00 horas', items: [{ channel: 'y', valueFormatter: (d) => d + unidade }] },
+    tooltip: {
+      title: (d) => d.hora + ':00 horas',
+      items: [{ channel: 'y', valueFormatter: (d) => d?.toFixed(2) + unidade }]
+    },
     point: {
       shapeField: 'square',
       sizeField: 4
@@ -26,8 +29,8 @@ const Grafico = ({ dados }) => {
     scale: {
       x: {
         domainMin: 0,
-        domainMax: 24,
-        tickCount: 24
+        domainMax: 23,
+        tickCount: 23
       },
       y: {
         domainMin: menorValor >= 0 ? menorValor - 10 : menorValor - 2

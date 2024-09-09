@@ -2,34 +2,43 @@ import { useEffect, useState } from 'react';
 
 import Context from '../context/Context';
 
+import { ErrorDisplay } from './../components/ErrorDisplay';
 import Header from './../components/Header';
 import Main from './../components/Main';
 
 import { Loader } from '../components/Loader';
 
-import { payload as dados } from '../mock/mock';
-
 const Layout = () => {
-  const [payload, setPayload] = useState();
+  const [payload, setPayload] = useState({});
   const [dataDisplay, setDataDisplay] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState({ status: false, mensagem: '' });
 
   const getDataAtual = () => {
-    const dataAtual = new Date().toLocaleString();
+    const dataAtual = new Date().toLocaleString('pt-BR');
     return dataAtual.substring(6, 10) + '-' + dataAtual.substring(3, 5) + '-' + dataAtual.substring(0, 2);
   };
 
-  const getDadosPorData = (data = getDataAtual()) => {
+  const getDadosPorData = async (data = getDataAtual()) => {
     setIsLoading(true);
     try {
-      //Fazer requisição POST
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}v1/estacao-meteorologica/resumo-diario?data=${encodeURIComponent(data)}`
+      );
+      const dados = await response.json();
+
+      if (response.status === 404) {
+        throw new Error(dados.mensagem || 'Erro desconhecido');
+      }
 
       setPayload(dados);
+      setError({ status: false, mensagem: '' });
     } catch (e) {
-      console.log(e);
+      setPayload({});
+      setError({ status: true, mensagem: e.message });
     } finally {
-      setTimeout(() => setIsLoading(false), 1000);
       setDataDisplay(data);
+      setIsLoading(false);
     }
   };
 
@@ -50,7 +59,7 @@ const Layout = () => {
             getDataAtual={getDataAtual}
             dataDisplay={dataDisplay}
           />
-          <Main />
+          {error.status ? <ErrorDisplay messagem={error.mensagem} /> : <Main />}
         </>
       )}
     </Context.Provider>

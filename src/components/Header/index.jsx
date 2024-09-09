@@ -4,13 +4,13 @@ import Context from '../../context/Context';
 
 import Subheader from './Subheader';
 
-import ClimaSVG from './../../assets/icons/cloud-sun.svg';
 import CalendarioSVG from './../../assets/icons/calendar.svg';
+import ClimaSVG from './../../assets/icons/cloud-sun.svg';
 import LocalSVG from './../../assets/icons/map-marker.svg';
 import AltitudeSVG from './../../assets/icons/mountain.svg';
 
 const Header = ({ handleMudaData, dataDisplay, getDataAtual }) => {
-  const { altitude } = useContext(Context);
+  const altitude = useContext(Context)?.altitude;
 
   const [dataSelecionada, setDataSelecionada] = useState(dataDisplay);
 
@@ -79,7 +79,7 @@ const Header = ({ handleMudaData, dataDisplay, getDataAtual }) => {
           iconSrc={AltitudeSVG}
           textContent={
             <>
-              Altitude: <span className="text-2xl ml-3">{altitude}</span>
+              Altitude: <span className="text-2xl ml-3">{altitude.toFixed(2)}m</span>
             </>
           }
         />

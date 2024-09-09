@@ -13,6 +13,22 @@ const Main = () => {
     <main>
       {grandezas.map((grandeza, index) => {
         const { mostradores, valores: dadosGrafico, unidade, ultimaMedicao } = dados[grandeza];
+
+        switch (grandeza) {
+          case 'temperatura':
+            grandeza = 'Temperatura';
+            break;
+          case 'sensacaoTermica':
+            grandeza = 'Sensação Térmica';
+            break;
+          case 'volumeChuva':
+            grandeza = 'Volume de Chuva';
+            break;
+          case 'umidade':
+            grandeza = 'Umidade';
+            break;
+        }
+
         return (
           <Section
             key={index}
@@ -26,7 +42,7 @@ const Main = () => {
             dadosMostradores={mostradores}
             ultimaMedicao={ultimaMedicao}
             unidade={unidade}
-          ></Section>
+          />
         );
       })}
     </main>
