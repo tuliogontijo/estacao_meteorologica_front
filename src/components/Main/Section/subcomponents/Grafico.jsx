@@ -6,14 +6,16 @@ const Grafico = ({ dados }) => {
   const { unidade, dadosGrafico } = dados;
 
   const menorValor = Math.min(...dadosGrafico.map((dado) => dado.valor));
+  const maiorValor = Math.max(...dadosGrafico.map((dado) => dado.valor));
 
   const props = {
     data: dadosGrafico,
     xField: 'hora',
     yField: 'valor',
     tooltip: {
+
       title: (d) => d.hora + ':00 horas',
-      items: [{ channel: 'y', valueFormatter: (d) => d?.toFixed(2) + unidade }]
+      items: [{ channel: 'y', valueFormatter: (d) => (d ? d.toFixed(2) + unidade : '') }]
     },
     point: {
       shapeField: 'square',
@@ -33,7 +35,9 @@ const Grafico = ({ dados }) => {
         tickCount: 23
       },
       y: {
-        domainMin: menorValor >= 0 ? menorValor - 10 : menorValor - 2
+        domainMin: menorValor < 0 ? menorValor - 10 : menorValor - 2,
+        domainMax: maiorValor <= 0 ? maiorValor + 10 : maiorValor,
+        tickCount: dadosGrafico.length
       }
     }
   };

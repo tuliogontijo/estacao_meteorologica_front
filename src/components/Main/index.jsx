@@ -27,6 +27,9 @@ const Main = () => {
           case 'umidade':
             grandeza = 'Umidade';
             break;
+          case 'pressao':
+            grandeza = 'Pressão';
+            break;
         }
 
         return (

@@ -79,7 +79,7 @@ const Header = ({ handleMudaData, dataDisplay, getDataAtual }) => {
           iconSrc={AltitudeSVG}
           textContent={
             <>
-              Altitude: <span className="text-2xl ml-3">{altitude.toFixed(2)}m</span>
+              Altitude: <span className="text-2xl ml-3">{altitude ? altitude.toFixed(2) + 'm':""}</span>
             </>
           }
         />
