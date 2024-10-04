@@ -59,14 +59,14 @@ const Header = ({ handleMudaData, dataDisplay, getDataAtual }) => {
                 name="data"
                 max={getDataAtual()}
                 min={getQuinzeDiasAtras()}
-                className="text-xl border border-black rounded-lg p-1"
+                className="text-xl border border-black rounded-lg p-1 "
                 value={dataSelecionada}
                 onChange={handleAtualizaValorData}
               />
               <input
                 type="submit"
                 value={'Selecionar'}
-                className="border-2 border-black rounded-md px-2 max-sm:px-1 bg-gray-900 text-white hover:text-black hover:bg-white"
+                className="border-2 border-black rounded-md px-2 max-sm:px-1 bg-gray-900 text-white hover:text-black hover:bg-white transition-colors cursor-pointer"
               />
             </form>
           }

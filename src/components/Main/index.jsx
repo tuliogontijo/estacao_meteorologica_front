@@ -28,7 +28,7 @@ const Main = () => {
             grandeza = 'Umidade';
             break;
           case 'pressao':
-            grandeza = 'Pressão';
+            grandeza = 'Pressão Atmosférica';
             break;
         }
 
